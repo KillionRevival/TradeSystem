@@ -96,6 +96,7 @@ Current_Amount: Şu anki miktar
 Trade_Spam: '&7Bu oyuncu zaten bir takas teklifi aldı&7!'
 Plugin_Reloading: '&cPlugin yenileniyor/reloadlanıyor...'
 Success_Plugin_Reloaded: '&aPlugin yenilendi/reloadlandı.'
+Cannot_Trade_Through_Walls: '&7You cannot trade through walls!'
 Player_is_not_in_range: '&7&c%player% adlı oyuncu takas yapmak için çok uzakta&7!'
 Cannot_trade_in_that_GameMode: '&cŞu anki oyun modunuzda takas yapamazsınız&7!'
 Other_cannot_trade_in_that_GameMode: '&7Bu oyuncu &cşu anki oyun modunda takas yapamaz!'

@@ -7,7 +7,11 @@ import de.codingair.tradesystem.spigot.TradeSystem;
 import de.codingair.tradesystem.spigot.utils.Lang;
 import de.codingair.tradesystem.spigot.utils.Permissions;
 import net.md_5.bungee.api.chat.TextComponent;
+
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -133,6 +137,11 @@ public class RuleManager {
             }
         }
 
+        if (areBlocksBetweenPlayers(player, other)) {
+            Lang.send(player, "Cannot_Trade_Through_Walls");
+            return true;
+        }
+
         return false;
     }
 
@@ -205,5 +214,16 @@ public class RuleManager {
         message.setTimeOut(10);
         message.add(new TextComponent(s1));
         message.send(p);
+    }
+
+    private static Boolean areBlocksBetweenPlayers(Player sender, Player receiver) {
+        Location senderLoc = sender.getEyeLocation();
+        Location receiverLoc = receiver.getEyeLocation();
+        double distance = senderLoc.distance(receiverLoc);
+        Vector direction = receiverLoc.toVector().subtract(senderLoc.toVector()).normalize();
+
+        RayTraceResult blocksBetweenPlayers = senderLoc.getWorld().rayTraceBlocks(senderLoc, direction, distance);
+
+        return blocksBetweenPlayers != null && blocksBetweenPlayers.getHitBlock() != null;
     }
 }

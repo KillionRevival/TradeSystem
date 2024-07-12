@@ -96,6 +96,7 @@ Current_Amount: "Montant actuel"
 Trade_Spam: "&7Ce joueur a &cdéjà reçu une demande d'échange&7 !"
 Plugin_Reloading: "&cLe plugin va être rechargé...."
 Success_Plugin_Reloaded: "&aLe plugin a été rechargé."
+Cannot_Trade_Through_Walls: '&7You cannot trade through walls!'
 Player_is_not_in_range: "&7Le joueur &c%player% &7n'est &cpas à portée&7!"
 Cannot_trade_in_that_GameMode: "&7Vous &cn'êtes pas en mesure d'échanger &7dans ce mode de jeu !"
 Other_cannot_trade_in_that_GameMode: "&7Ce joueur &cne peut pas échanger &7dans son mode de jeu !"
