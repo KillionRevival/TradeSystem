@@ -1,5 +1,6 @@
 package de.codingair.tradesystem.spigot.trade.gui.editor;
 
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
 import de.codingair.codingapi.player.gui.inventory.v2.GUI;
 import de.codingair.codingapi.player.gui.inventory.v2.Page;
 import de.codingair.codingapi.player.gui.inventory.v2.exceptions.AlreadyOpenedException;
@@ -223,7 +224,8 @@ public class Editor extends GUI {
                     layoutInventory.setItem(i, buildSlotCursor(icon, 1));
                 } else if (item != null) {
                     //add marker
-                    item.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
+                    //noinspection deprecation
+                    item.addUnsafeEnchantment(Enchantment.values()[0], 1);
 
                     ItemMeta meta = item.getItemMeta();
                     assert meta != null;
@@ -268,8 +270,7 @@ public class Editor extends GUI {
         }
 
         builder.setAmount(amount);
-        builder.addEnchantment(Enchantment.DAMAGE_ALL, 1);
-        builder.setHideEnchantments(true);
+        builder.addEnchantmentEffect();
 
         EditorInfo info = IconHandler.getInfo(icon);
         builder.setName("§c" + info.getName());
@@ -364,7 +365,7 @@ public class Editor extends GUI {
                 if (isSlotIcon()) {
                     assert setting != null;
                     int amount = 26 - countIcon(setting);
-                    Bukkit.getScheduler().runTaskLater(TradeSystem.getInstance(), () -> e.getView().setCursor(buildSlotCursor(setting, amount)), 1);
+                    UniversalScheduler.getScheduler(TradeSystem.getInstance()).runTaskLater(() -> e.getView().setCursor(buildSlotCursor(setting, amount)), 1);
                 }
 
                 open = true;
